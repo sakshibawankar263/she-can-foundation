@@ -1,11 +1,12 @@
+// src/components/ScrollToTop.jsx
+// src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Layout Framework
+// Components & Pages
 import Navbar from "./components/layout/Navbar"; 
 import Footer from "./components/layout/Footer";
-
-// Page Views
+import ScrollToTop from "./components/ScrollToTop"; // Import the helper
 import Hero from "./components/sections/Hero";
 import Initiatives from "./pages/Initiatives";
 import Team from "./pages/Team";
@@ -14,13 +15,13 @@ import Connect from "./pages/Connect";
 const App = () => {
   return (
     <Router>
+      <ScrollToTop /> {/* Forces scroll reset on route change */}
+      
       <div className="relative min-h-screen w-full bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 overflow-x-hidden flex flex-col justify-between select-none transition-colors duration-300">
         
         <div>
-          {/* Global Navigation */}
           <Navbar />
 
-          {/* Page Rendering Pipeline */}
           <main className="w-full min-h-screen pb-24 lg:pb-0 lg:pl-28 transition-all duration-300">
             <Routes>
               <Route path="/" element={<Hero />} />
@@ -31,7 +32,6 @@ const App = () => {
           </main>
         </div>
 
-        {/* Global Footer */}
         <div className="w-full lg:pl-28 transition-all duration-300">
           <Footer />
         </div>

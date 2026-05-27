@@ -1,35 +1,17 @@
 @import "tailwindcss";
 
-@theme {
-  /* NGO Professional Theme Palette */
-  --color-bgDark: #000000;
-  --color-surfaceDark: #1A1A24;
-  --color-accentPurple: #7C3AED;
-  --color-accentPink: #9333EA;
-  --color-textPrimary: #FFFFFF;
-  --color-textSecondary: #94A3B8;
-
-  /* Custom animation timing */
+@@theme {
   --animate-fadeUp: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
   @keyframes fadeUp {
-    0% {
-      opacity: 0;
-      transform: translateY(25px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 }
 
 @layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  /* This prevents animation if the user has "Reduce Motion" enabled on their phone/PC */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fadeUp { animation: none !important; }
   }
 }
