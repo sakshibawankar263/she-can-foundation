@@ -1,89 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
-import Button from '../ui/Button';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Heart, Sparkles, HandHeart, Users } from "lucide-react";
 
-export default function Navbar({ onOpenModal }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const NAV_ITEMS = [
+  { label: "Home", path: "/", icon: Heart },
+  { label: "Initiatives", path: "/events", icon: Sparkles },
+  { label: "Connect", path: "/connect", icon: HandHeart },
+  { label: "Our Team", path: "/team", icon: Users },
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Impact', href: '#impact' },
-    { name: 'Initiatives', href: '#initiatives' },
-  ];
+const Navbar = () => {
+  const location = useLocation();
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 flex items-center ${
-      isScrolled 
-        ? 'bg-bgDark/70 backdrop-blur-md border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.2)]' 
-        : 'bg-transparent border-b border-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
-        {/* Brand/Logo */}
-        <a href="#home" className="flex items-center gap-2 group">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-accentPurple to-accentPink flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)]">
-            <Sparkles className="h-5 w-5 text-textPrimary" />
-          </div>
-          <span className="font-bold text-lg tracking-tight text-textPrimary group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-accentPurple group-hover:to-accentPink group-hover:bg-clip-text transition-all duration-300">
-            She Can <span className="text-accentPink font-medium">Foundation</span>
-          </span>
-        </a>
+    <nav className="fixed z-50 bottom-0 left-0 w-full h-20 px-6 pb-2 flex flex-row justify-between items-center bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-t border-zinc-200 dark:border-zinc-800/80 shadow-lg lg:top-1/2 lg:bottom-auto lg:left-6 lg:w-24 lg:h-auto lg:-translate-y-1/2 lg:py-10 lg:flex-col lg:justify-center lg:gap-8 lg:border lg:rounded-2xl">
+      <div className="flex flex-row lg:flex-col justify-around lg:justify-center items-center w-full gap-2 lg:gap-6">
+        {NAV_ITEMS.map((item) => {
+          const IconComponent = item.icon;
+          const isActive = location.pathname === item.path;
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors relative py-2 group"
+          return (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`group relative flex flex-col items-center justify-center w-16 h-16 rounded-xl transition-all duration-300 ${
+                isActive 
+                  ? "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold" 
+                  : "text-zinc-400 dark:text-zinc-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+              }`}
             >
-              {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-accentPurple to-accentPink transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </div>
+              {/* Soft visual glow line for current position */}
+              {isActive && (
+                <div className="absolute bg-indigo-500 dark:bg-indigo-400 -top-3 left-1/2 -translate-x-1/2 w-6 h-[3px] rounded-full lg:top-1/2 lg:-left-3 lg:-translate-y-1/2 lg:w-[3px] lg:h-6" />
+              )}
 
-        {/* Desktop Call To Action */}
-        <div className="hidden md:block">
-          <Button variant="primary" onClick={onOpenModal}>Join Us</Button>
-        </div>
+              <div className="transition-transform duration-300 group-hover:scale-110">
+                <IconComponent size={22} strokeWidth={2} />
+              </div>
 
-        {/* Mobile Menu Icon */}
-        <button 
-          className="md:hidden text-textPrimary focus:outline-none cursor-pointer"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+              <span className={`text-[10px] font-sans font-medium tracking-tight mt-1 lg:hidden ${isActive ? "text-indigo-600 dark:text-indigo-400" : "text-zinc-500"}`}>
+                {item.label}
+              </span>
+
+              {/* Desktop Floating Tooltip Badge */}
+              <div className="absolute left-full ml-5 px-3 py-1.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 text-xs font-sans font-medium rounded-lg opacity-0 -translate-x-4 pointer-events-none transition-all duration-200 ease-out group-hover:opacity-100 group-hover:translate-x-0 hidden lg:flex items-center shadow-md z-50">
+                {item.label}
+                <div className="absolute top-1/2 -left-1.5 w-3 h-3 bg-zinc-900 dark:bg-zinc-100 rotate-45 -translate-y-1/2 -z-10 rounded-sm" />
+              </div>
+            </Link>
+          );
+        })}
       </div>
-
-      {/* Mobile Nav Overlay Menu */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-20 bg-bgDark/95 backdrop-blur-xl z-40 md:hidden flex flex-col p-6 space-y-6 border-t border-white/5">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-xl font-medium text-textSecondary hover:text-textPrimary transition-colors py-2 border-b border-white/5"
-            >
-              {link.name}
-            </a>
-          ))}
-          <Button variant="primary" className="w-full mt-4" onClick={() => { setIsMobileMenuOpen(false); onOpenModal(); }}>
-            Join Us
-          </Button>
-        </div>
-      )}
     </nav>
   );
-}
+};
+
+export default Navbar;

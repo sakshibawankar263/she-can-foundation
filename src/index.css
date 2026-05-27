@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Ported from your previous color utility matrices */
+  /* NGO Professional Theme Palette */
   --color-bgDark: #000000;
   --color-surfaceDark: #1A1A24;
   --color-accentPurple: #7C3AED;
   --color-accentPink: #9333EA;
   --color-textPrimary: #FFFFFF;
   --color-textSecondary: #94A3B8;
-}
 
-@layer utilities {
-  /* Ported fadeUp structural metrics from your previous project layout */
+  /* Custom animation timing */
+  --animate-fadeUp: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
   @keyframes fadeUp {
     0% {
       opacity: 0;
@@ -22,12 +22,9 @@
       transform: translateY(0);
     }
   }
+}
 
-  .animate-fadeUp {
-    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  /* Ported structural scrollbar invisibility properties */
+@layer utilities {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
