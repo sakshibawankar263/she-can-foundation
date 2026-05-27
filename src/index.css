@@ -1,23 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bgDark: #0B1120;
-  --color-accentPurple: #A855F7;
-  --color-accentPink: #F472B6;
-  --color-textPrimary: #F8FAFC;
-  --color-textSecondary: #CBD5E1;
-  
-  --font-sans: 'Inter', sans-serif;
+  /* Ported from your previous color utility matrices */
+  --color-bgDark: #000000;
+  --color-surfaceDark: #1A1A24;
+  --color-accentPurple: #7C3AED;
+  --color-accentPink: #9333EA;
+  --color-textPrimary: #FFFFFF;
+  --color-textSecondary: #94A3B8;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer utilities {
+  /* Ported fadeUp structural metrics from your previous project layout */
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-body {
-  background-color: var(--color-bgDark);
-  color: var(--color-textPrimary);
-  overflow-x: hidden;
-  font-family: var(--font-sans);
+  .animate-fadeUp {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Ported structural scrollbar invisibility properties */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
