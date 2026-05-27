@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Github, Twitter, Linkedin } from 'lucide-react';
+import { Sparkles, GitHub, Twitter, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -50,7 +50,7 @@ export default function Footer() {
               <Linkedin className="h-5 w-5" />
             </a>
             <a href="#" className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-textSecondary hover:text-textPrimary hover:border-accentPurple transition-all duration-300">
-              <Github className="h-5 w-5" />
+              <GitHub className="h-5 w-5" />
             </a>
           </div>
         </div>
