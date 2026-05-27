@@ -1,17 +1,22 @@
 @import "tailwindcss";
 
-@@theme {
+@layer base {
+  body {
+    @apply antialiased text-zinc-900 bg-zinc-50 dark:bg-zinc-950 dark:text-zinc-100;
+  }
+}
+
+/* Ye animation definitions aapke purane project ke liye zaruri hain */
+@theme {
   --animate-fadeUp: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-lift: lift 0.3s ease-out forwards;
 
   @keyframes fadeUp {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-}
 
-@layer utilities {
-  /* This prevents animation if the user has "Reduce Motion" enabled on their phone/PC */
-  @media (prefers-reduced-motion: reduce) {
-    .animate-fadeUp { animation: none !important; }
+  @keyframes lift {
+    100% { transform: translateY(-10px); }
   }
 }
