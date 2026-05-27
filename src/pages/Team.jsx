@@ -1,4 +1,5 @@
 import React from "react";
+// Image import path: src/assets/images.jpeg
 import teamPhoto from "../assets/images.jpeg"; 
 
 const TeamMember = ({ name, role, bio }) => (
@@ -13,12 +14,16 @@ const TeamMember = ({ name, role, bio }) => (
 const Team = () => {
   return (
     <div className="max-w-6xl mx-auto px-6 py-16 animate-fadeUp">
+      
+      {/* 1. TEAM PHOTO HERO SECTION */}
       <div className="relative rounded-[2rem] overflow-hidden shadow-2xl mb-20 group border-4 border-white dark:border-zinc-800">
         <img 
           src={teamPhoto} 
           alt="She Can Foundation Team" 
           className="w-full h-[500px] object-cover transition-transform duration-[2000ms] group-hover:scale-105"
         />
+        
+        {/* Overlay */}
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-6">
           <h1 className="text-5xl md:text-7xl font-extrabold text-white uppercase tracking-tighter drop-shadow-lg">
             Meet The Team
@@ -29,6 +34,7 @@ const Team = () => {
         </div>
       </div>
 
+      {/* 2. CORE TEAM */}
       <h1 className="text-4xl font-bold text-zinc-900 dark:text-white mb-6">Our Core Team</h1>
       <p className="text-zinc-500 mb-12 max-w-2xl text-lg">Meet the individuals dedicated to the She Can Foundation mission.</p>
       
@@ -37,6 +43,7 @@ const Team = () => {
         <TeamMember name="Volunteer Leads" role="Community Operations" bio="Our on-ground coordinators managing local education and healthcare drives." />
       </div>
 
+      {/* 3. VOLUNTEER CTA SECTION */}
       <section className="bg-gradient-to-r from-indigo-600 to-purple-700 p-12 rounded-[2rem] text-center text-white space-y-6">
         <h2 className="text-3xl font-bold">Ready to be part of the change?</h2>
         <p className="text-indigo-100 max-w-lg mx-auto">We are looking for dedicated individuals to join our team of volunteers.</p>
