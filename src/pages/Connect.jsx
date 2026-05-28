@@ -1,4 +1,13 @@
 import React from "react";
+import { FaInstagram, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+
+// Ensure you have installed: npm install react-icons
+const socialLinks = {
+  instagram: "https://instagram.com/shecanfoundation",
+  linkedin: "https://linkedin.com/company/shecanfoundation",
+  twitter: "https://twitter.com/shecanfoundation",
+  email: "mailto:contact@shecanfoundation.org"
+};
 
 const Connect = () => {
   return (
@@ -15,7 +24,7 @@ const Connect = () => {
         </p>
       </div>
 
-      {/* 2. Cards Section (ORIGINAL CARDS PRESERVED) */}
+      {/* 2. Cards Section */}
       <section className="mb-24 grid md:grid-cols-3 gap-8">
         {[
           { title: "Impact", desc: "Your contribution directly funds education for underprivileged children." },
@@ -30,7 +39,7 @@ const Connect = () => {
         ))}
       </section>
 
-      {/* 3. Form & Info Section */}
+      {/* 3. Form & Social Section */}
       <section className="grid lg:grid-cols-2 gap-16 items-start mb-24">
         <div className="space-y-10">
           <div>
@@ -38,17 +47,37 @@ const Connect = () => {
               <span className="text-zinc-900 dark:text-white">Ready to </span>
               <span className="text-indigo-600">Start Your Journey?</span>
             </h2>
-            <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed">
-              We believe in transparency and collaboration. Once you submit your application, our core team will review your profile and reach out to you within 48 hours.
+            <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8">
+              We believe in transparency and collaboration. Submit your details, and our core team will reach out to you within 48 hours.
             </p>
+            
+            {/* Updated Social Section with Icons */}
+            <div className="bg-zinc-100 dark:bg-zinc-800 p-8 rounded-3xl">
+                <h4 className="font-bold text-lg mb-6 text-zinc-900 dark:text-white">Follow our journey</h4>
+                <div className="flex gap-4">
+                    <a href={socialLinks.instagram} target="_blank" rel="noreferrer" className="p-4 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-700 hover:text-indigo-600 hover:border-indigo-500 transition-all text-2xl">
+                        <FaInstagram />
+                    </a>
+                    <a href={socialLinks.linkedin} target="_blank" rel="noreferrer" className="p-4 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-700 hover:text-indigo-600 hover:border-indigo-500 transition-all text-2xl">
+                        <FaLinkedin />
+                    </a>
+                    <a href={socialLinks.twitter} target="_blank" rel="noreferrer" className="p-4 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-700 hover:text-indigo-600 hover:border-indigo-500 transition-all text-2xl">
+                        <FaTwitter />
+                    </a>
+                    <a href={socialLinks.email} className="flex items-center gap-3 px-6 py-4 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 transition-all">
+                        <FaEnvelope /> Email
+                    </a>
+                </div>
+            </div>
           </div>
         </div>
 
+        {/* Form */}
         <form className="p-10 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-indigo-500/5 space-y-6">
           <input type="text" placeholder="Full Name" className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 outline-none transition-all" />
           <input type="email" placeholder="Email Address" className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 outline-none transition-all" />
           <textarea placeholder="Tell us why you want to join..." className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 h-32 outline-none transition-all"></textarea>
-          <button className="w-full py-5 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 transition-all active:scale-[0.98]">
+          <button type="button" className="w-full py-5 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 transition-all active:scale-[0.98]">
             Submit Application
           </button>
         </form>
