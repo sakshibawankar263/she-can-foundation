@@ -1,5 +1,5 @@
 import React from "react";
-import { socialLinks } from "../../data/socials"; // Path check kar lein
+import { socialLinks } from "../../data/socials"; 
 import { FaInstagram, FaLinkedin, FaTwitter, FaFacebook, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
@@ -35,9 +35,12 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-zinc-800 text-center text-zinc-600 text-xs">
-        © 2026 She Can Foundation. All rights reserved.
+      {/* Copyright & Developer Info with bottom padding for mobile nav bar */}
+      <div className="max-w-6xl mx-auto mt-10 pt-6 pb-24 border-t border-zinc-800 text-center text-zinc-600 text-xs space-y-2">
+        <p>© 2026 She Can Foundation. All rights reserved.</p>
+        <p>
+          Developed by <span className="text-indigo-400 font-semibold">Sakshi Bawankar</span>
+        </p>
       </div>
     </footer>
   );

@@ -6,7 +6,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import ScrollToTop from "./components/ScrollToTop"; 
 import Hero from "./components/sections/Hero";
-import StatsSection from "./components/sections/StatsSection"; // Added import
+import StatsSection from "./components/sections/StatsSection"; 
 import Initiatives from "./pages/Initiatives";
 import Team from "./pages/Team";
 import Connect from "./pages/Connect";
@@ -16,27 +16,23 @@ const App = () => {
     <Router>
       <ScrollToTop /> 
       
-      <div className="relative min-h-screen w-full bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 overflow-x-hidden flex flex-col justify-between select-none transition-colors duration-300">
+      <div className="flex flex-col min-h-screen w-full bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 overflow-x-hidden transition-colors duration-300">
         
-        <div>
-          <Navbar />
+        <Navbar />
 
-          <main className="w-full min-h-screen pb-24 lg:pb-0 lg:pl-28 transition-all duration-300">
-            <Routes>
-              {/* Grouping components for the Home page */}
-              <Route path="/" element={
-                <>
-                  <Hero />
-                  <StatsSection />
-                </>
-              } />
-              
-              <Route path="/events" element={<Initiatives />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/connect" element={<Connect />} />
-            </Routes>
-          </main>
-        </div>
+        <main className="flex-grow w-full lg:pl-28 transition-all duration-300">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <StatsSection />
+              </>
+            } />
+            <Route path="/events" element={<Initiatives />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/connect" element={<Connect />} />
+          </Routes>
+        </main>
 
         <div className="w-full lg:pl-28 transition-all duration-300">
           <Footer />
