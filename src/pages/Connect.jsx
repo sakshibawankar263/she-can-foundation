@@ -1,7 +1,6 @@
 import React from "react";
 import { FaInstagram, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 
-// Ensure you have installed: npm install react-icons
 const socialLinks = {
   instagram: "https://instagram.com/shecanfoundation",
   linkedin: "https://linkedin.com/company/shecanfoundation",
@@ -51,7 +50,6 @@ const Connect = () => {
               We believe in transparency and collaboration. Submit your details, and our core team will reach out to you within 48 hours.
             </p>
             
-            {/* Updated Social Section with Icons */}
             <div className="bg-zinc-100 dark:bg-zinc-800 p-8 rounded-3xl">
                 <h4 className="font-bold text-lg mb-6 text-zinc-900 dark:text-white">Follow our journey</h4>
                 <div className="flex gap-4">
@@ -72,12 +70,37 @@ const Connect = () => {
           </div>
         </div>
 
-        {/* Form */}
-        <form className="p-10 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-indigo-500/5 space-y-6">
-          <input type="text" placeholder="Full Name" className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 outline-none transition-all" />
-          <input type="email" placeholder="Email Address" className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 outline-none transition-all" />
-          <textarea placeholder="Tell us why you want to join..." className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 h-32 outline-none transition-all"></textarea>
-          <button type="button" className="w-full py-5 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 transition-all active:scale-[0.98]">
+        {/* Updated Form with Formspree */}
+        <form 
+          action="https://formspree.io/f/xnjrwjye" 
+          method="POST"
+          className="p-10 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-indigo-500/5 space-y-6"
+        >
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Full Name" 
+            required 
+            className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 outline-none transition-all" 
+          />
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Email Address" 
+            required 
+            className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 outline-none transition-all" 
+          />
+          <textarea 
+            name="message" 
+            placeholder="Tell us why you want to join..." 
+            required 
+            className="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 h-32 outline-none transition-all"
+          ></textarea>
+          
+          <button 
+            type="submit" 
+            className="w-full py-5 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 transition-all active:scale-[0.98]"
+          >
             Submit Application
           </button>
         </form>
